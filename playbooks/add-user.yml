@@ -4,7 +4,7 @@
   become: true
   vars:
     new_username: dheerajpotluri
-    ssh_public_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCv7HIRFV75+Bn8pxM/3wkdijtTOLit0r1iuGFkgw6/sq26oZfLandtS8tvaI7s5lj3GYz/C90/MOiEnq5A4ozr6K7cIrQZNQb1HRiPKfqcesWQFr7co79jEVyWaO8jiyTdlpWj6llatjuFWD7ABpWGlmMG07TOI6q0+MBpG1jIzMzG60oZvcZXcDedcOtmLgf8fz2a5PpPIyniwUayJ0HR4scxtyv8C0pt9oHMaEAsHlJ40uI/A9iuxD7OEG8p4msLkrdBzt2AoBtd52hVRcYcoUdYAjMN6TsiwaOwocLoy9yAxFF3B/A00kZa0IDX7A+QjhHI11Bo1bAuPFobV9a+rSpoaqrjfaiJ3xxsX+Q2Z3pU67uzh5OQj4A1QIk87vm865LT+YsvMppbM1Tb0HPmmTRjI0mR1FI23nYcfA7ALIwIbZ9EpGWqRk5DQ9nGl0P+c885jb1DDoufLU9Ly29GgkSVzXiXpb8Cz/egJEftyeRL2wxwDU4aerSLmRIg3qMs24pUI70+sThuKFsPmfG5iIP+5PluT6HtOQglrVQM+rugsS95qpt2aS/NYFm09zXPnWuNPGTrnifXcTP9Yd5iAAWp4XKXKSNR/y5Kd7vxfbepUUAWG5W/zIjua6+cUUsYof2uCPpwNsW48MBPO28DA/IRmTgPobfQEGAP9FHhLw== i853956@DWX9YWFV1Y"
+
   tasks:
     - name: Create the new user
       user:
@@ -24,7 +24,7 @@
     - name: Add the SSH public key to authorized_keys
       authorized_key:
         user: "{{ new_username }}"
-        key: "{{ ssh_public_key }}"
+        key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
         state: present
 
     - name: Add the new user to the sudo group
