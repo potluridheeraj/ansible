@@ -4,4 +4,9 @@
     - name: apt
       apt:
         update_cache: yes
-        upgrade: 'yes'
+        upgrade: "yes"
+
+    - name: Install sudo package
+      package:
+        name: sudo
+        state: present

@@ -1,0 +1,7 @@
+# connectivity_test.yml
+---
+- name: Basic Connectivity Test
+  hosts: "*"
+  tasks:
+    - name: Check Connectivity
+      ping:
