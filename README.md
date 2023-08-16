@@ -1,4 +1,4 @@
 # ansible
 
-Learning Ansible
+Ansible playbooks for homelab
 ansible-playbook playbooks/zsh.yml -i hosts.ini
